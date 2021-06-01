@@ -1,0 +1,29 @@
+{
+    "name": "Operaatio RTX 2021",
+    "description": "Otetaan helpot pois 😎",
+    "version": "1.0",
+    "manifest_version": 2,
+    "icons": {
+        "16": "icon3.png",
+        "48": "icon2.png",
+        "128": "icon.png"
+    },
+    "content_scripts": [{
+        "matches": ["https://www.jimms.fi/*", "https://www.gigantti.fi/*"],
+        "js": ["content.js"]
+    }],
+    "browser_action": {
+        "default_icon": "icon.png"
+    },
+    "permissions": [
+        "activeTab",
+        "clipboardWrite"
+    ],
+    "background": {
+        "persistent": false,
+        "scripts": ["background.js"]
+    },
+    "web_accessible_resources": [
+        "media/*.png"
+    ]
+  }
