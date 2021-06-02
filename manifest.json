@@ -9,7 +9,7 @@
         "128": "icon.png"
     },
     "content_scripts": [{
-        "matches": ["https://www.jimms.fi/*", "https://www.gigantti.fi/*"],
+        "matches": ["<all_urls>"],
         "js": ["content.js"]
     }],
     "browser_action": {
