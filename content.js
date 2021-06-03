@@ -7,7 +7,70 @@ RTXIcon.style.width = "35px"
 RTXIcon.style.marginRight = "1px"
 RTXIcon.style.float = "left"
 
-if (currentWebsite.includes("jimms")) {
+if (currentWebsite.includes("proshop")) {
+    let addToBasket = setInterval(() => {
+        if (document.querySelector(".site-btn-addToBasket-lg")) {
+            document.querySelector(".site-btn-addToBasket-lg").click()
+            clearInterval(addToBasket)
+        }
+    }, 1);
+
+    let goToCheckout = setInterval(() => {
+        if (document.querySelector("a.btn.btn-lg.pull-right.btn-success")) {
+            document.querySelector("a.btn.btn-lg.pull-right.btn-success").click()
+            clearInterval(goToCheckout)
+        }
+    }, 1);
+
+    let acceptTerms = setInterval(() => {
+        if (document.querySelector("#traidConditionsAnswer")) {
+            document.querySelector("#traidConditionsAnswer").click()
+            clearInterval(acceptTerms)
+        }
+    }, 1);
+
+    if (currentWebsite.includes("Delivery")) {
+        let deliveryButton = setInterval(() => {
+            if (document.querySelector(".btn.btn-success")) {
+                document.querySelector(".btn.btn-success").click()
+                clearInterval(deliveryButton)
+            }
+        }, 1);
+    }
+
+    if (currentWebsite.includes("Payment")) {
+        let mobilepayButton = setInterval(() => {
+            if (document.querySelector("#form-checkout > div > div.panel-body.site-checkOut-paymentoptions > div:nth-child(2) > div > ul > li:nth-child(4)")) {
+                let payButton = document.querySelector("#form-checkout > div > div.panel-body.site-checkOut-paymentoptions > div:nth-child(2) > div > ul > li:nth-child(4)")
+                payButton.querySelector(".btn.btn-success").click()
+                clearInterval(mobilepayButton)
+            }
+        }, 1);
+    }
+
+    if (!currentWebsite.includes("Basket")) {
+        let addLogo = setInterval(() => {
+            if (document.querySelector(".form-horizontal")) {
+                RTXIcon.style.float = "right"
+                document.querySelector(".form-horizontal").prepend(RTXIcon)
+                clearInterval(addLogo)
+            }
+        }, 1);
+    }
+} 
+
+else if (currentWebsite.includes("bambora")) {
+    let addPhone = setInterval(() => {
+        if (document.querySelector("#phonenumber")) {
+            document.querySelector("#phonenumber").value = "452309725"
+            document.querySelector("#mobilePayContinueBtn").disabled = false
+            document.querySelector("#mobilePayContinueBtn").click()
+            clearInterval(addPhone)
+        }
+    }, 1);
+} 
+
+else if (currentWebsite.includes("jimms")) {
     if (currentWebsite.includes("jimms.fi/fi/CheckOut") || currentWebsite.includes("jimms.fi/fi/ShoppingCart")) {
         let basketNext = setInterval(() => {
             if (document.querySelector("#cart").className == "tab-pane active") {
@@ -64,13 +127,12 @@ if (currentWebsite.includes("jimms")) {
         for (i = 0; i < basketButtons.length; i++) {
             basketButtons[i].addEventListener("click", function () {
                 window.open("https://www.jimms.fi/fi/CheckOut/Customer")
-
             })
         }
         let addIcon = document.querySelector(".navbar-nav")
         addIcon.prepend(RTXIcon)
     }
-} 
+}
 
 else if (currentWebsite.includes("mobilepay")) {
     let mobilepayPayment = setInterval(() => {
