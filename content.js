@@ -1,5 +1,6 @@
-let currentWebsite = window.location.toString()
+let REFRESH_TIME = 100
 
+let currentWebsite = window.location.toString()
 let RTXIcon = document.createElement("img")
 RTXIcon.src = chrome.runtime.getURL("media/icon.png")
 RTXIcon.style.height = "35px"
@@ -56,6 +57,12 @@ if (currentWebsite.includes("proshop")) {
                 clearInterval(addLogo)
             }
         }, 1);
+
+        setInterval(() => {
+            if(document.querySelector(".btn.btn-block.btn-primary")){
+                window.location.reload(false)
+            }
+        }, REFRESH_TIME);
     }
 } 
 

@@ -16,8 +16,10 @@
         "default_icon": "icon.png"
     },
     "permissions": [
+        "tabs",
         "activeTab",
-        "clipboardWrite"
+        "clipboardWrite",
+        "storage"
     ],
     "background": {
         "persistent": false,
