@@ -1,13 +1,7 @@
-let REFRESH_TIME = "100"
+let REFRESH_TIME = "1500"
 let PHONE_NUMBER = "452309725"
 
 let currentWebsite = window.location.toString()
-let RTXIcon = document.createElement("img")
-RTXIcon.src = chrome.runtime.getURL("media/icon.png")
-RTXIcon.style.height = "35px"
-RTXIcon.style.width = "35px"
-RTXIcon.style.marginRight = "1px"
-RTXIcon.style.float = "left"
 
 if (currentWebsite.includes("proshop")) {
     let addToBasket = setInterval(() => {
@@ -50,22 +44,12 @@ if (currentWebsite.includes("proshop")) {
         }, 1);
     }
 
-    if (!currentWebsite.includes("Basket")) {
-        let addLogo = setInterval(() => {
-            if (document.querySelector(".form-horizontal")) {
-                RTXIcon.style.float = "right"
-                document.querySelector(".form-horizontal").prepend(RTXIcon)
-                clearInterval(addLogo)
-            }
-        }, 1);
-
-        setInterval(() => {
-            if(document.querySelector(".btn.btn-block.btn-primary")){
-                window.location.reload(false)
-            }
-        }, REFRESH_TIME);
-    }
-} 
+    setInterval(() => {
+        if(document.querySelector(".btn.btn-block.btn-primary")){
+            window.location.reload(false)
+        }
+    }, REFRESH_TIME);
+}
 
 else if (currentWebsite.includes("bambora")) {
     let addPhone = setInterval(() => {
@@ -80,22 +64,29 @@ else if (currentWebsite.includes("bambora")) {
 
 else if (currentWebsite.includes("jimms")) {
     if (currentWebsite.includes("jimms.fi/fi/CheckOut") || currentWebsite.includes("jimms.fi/fi/ShoppingCart")) {
+        let nextPage = setInterval(() => {
+            if(document.querySelector(".checkoutbutton > .btn-success")){
+                document.querySelector(".checkoutbutton > .btn-success").click()
+                clearInterval(nextPage)
+            }
+        }, 1);
+
         let basketNext = setInterval(() => {
-            if (document.querySelector("#cart").className == "tab-pane active") {
+            if (document.querySelector("#cart") && document.querySelector("#cart").className == "tab-pane active") {
                 document.querySelectorAll(".btn.btn-success")[2].click()
                 clearInterval(basketNext)
             }
         }, 1);
 
         let infoNext = setInterval(() => {
-            if (document.querySelector("#customer").className == "tab-pane active") {
+            if (document.querySelector("#customer") && document.querySelector("#customer").className == "tab-pane active") {
                 document.querySelectorAll(".btn.btn-success")[4].click()
                 clearInterval(infoNext)
             }
         }, 1);
 
         let deliveryNext = setInterval(() => {
-            if (document.querySelector("#delivery").className == "tab-pane active" && document.querySelector("#delivery h4") && !document.querySelector("#delivery > div.alert.alert-info")) {
+            if (document.querySelector("#delivery") && document.querySelector("#delivery").className == "tab-pane active" && document.querySelector("#delivery h4") && !document.querySelector("#delivery > div.alert.alert-info")) {
                 document.querySelector("#DeliveryMethodID").remove()
                 document.querySelector("#DeliveryMethodID").remove()
                 document.querySelector("#DeliveryMethodID").remove()
@@ -106,7 +97,7 @@ else if (currentWebsite.includes("jimms")) {
         }, 1);
 
         let postNext = setInterval(() => {
-            if (document.querySelector("#delivery").className == "tab-pane active" && document.querySelector("#delivery h3")) {
+            if (document.querySelector("#delivery") && document.querySelector("#delivery").className == "tab-pane active" && document.querySelector("#delivery h3")) {
                 document.querySelector("#SPID").checked = "true"
                 document.querySelectorAll(".btn.btn-success")[7].click()
                 clearInterval(postNext)
@@ -115,7 +106,7 @@ else if (currentWebsite.includes("jimms")) {
 
 
         let paymentNext = setInterval(() => {
-            if (document.querySelector("#delivery").className == "tab-pane active" && document.querySelector("#delivery h4") && document.querySelector("#delivery > div.alert.alert-info")) {
+            if (document.querySelector("#delivery") && document.querySelector("#delivery").className == "tab-pane active" && document.querySelector("#delivery h4") && document.querySelector("#delivery > div.alert.alert-info")) {
                 document.querySelector("#PaymentMethodID").checked = "true"
                 document.querySelectorAll(".btn.btn-success")[6].click()
                 clearInterval(paymentNext)
@@ -123,7 +114,7 @@ else if (currentWebsite.includes("jimms")) {
         }, 1);
 
         let mobilepayNext = setInterval(() => {
-            if (document.querySelector("#verify").className == "tab-pane active") {
+            if (document.querySelector("#verify") && document.querySelector("#verify").className == "tab-pane active") {
                 document.querySelectorAll(".btn-payment.payment-image")[11].click()
                 clearInterval(mobilepayNext)
             }
@@ -131,14 +122,18 @@ else if (currentWebsite.includes("jimms")) {
     } 
     
     else {
-        let basketButtons = document.getElementsByClassName("btn btn-success btn-sm")
-        for (i = 0; i < basketButtons.length; i++) {
-            basketButtons[i].addEventListener("click", function () {
-                window.open("https://www.jimms.fi/fi/CheckOut/Customer")
-            })
-        }
-        let addIcon = document.querySelector(".navbar-nav")
-        addIcon.prepend(RTXIcon)
+        let addBasket = setInterval(() => {
+            if(document.querySelector(".addcard > .btn-success")){
+                document.querySelector(".addcard > .btn-success").click()
+                clearInterval(addBasket)
+            }
+        }, 1);
+
+        setInterval(() => {
+            if(document.querySelector(".addcard > .disabled")){
+                window.location.reload(false)
+            }
+        }, REFRESH_TIME);
     }
 }
 
