@@ -1,4 +1,5 @@
-let REFRESH_TIME = 100
+let REFRESH_TIME = "100"
+let PHONE_NUMBER = "452309725"
 
 let currentWebsite = window.location.toString()
 let RTXIcon = document.createElement("img")
@@ -69,7 +70,7 @@ if (currentWebsite.includes("proshop")) {
 else if (currentWebsite.includes("bambora")) {
     let addPhone = setInterval(() => {
         if (document.querySelector("#phonenumber")) {
-            document.querySelector("#phonenumber").value = "452309725"
+            document.querySelector("#phonenumber").value = PHONE_NUMBER
             document.querySelector("#mobilePayContinueBtn").disabled = false
             document.querySelector("#mobilePayContinueBtn").click()
             clearInterval(addPhone)
