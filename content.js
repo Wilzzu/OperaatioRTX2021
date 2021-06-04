@@ -45,11 +45,11 @@ if (currentWebsite.includes("proshop")) {
     }
 
     setInterval(() => {
-        if(document.querySelector(".btn.btn-block.btn-primary")){
+        if (document.querySelector(".btn.btn-block.btn-primary")) {
             window.location.reload(false)
         }
     }, REFRESH_TIME);
-}
+} 
 
 else if (currentWebsite.includes("bambora")) {
     let addPhone = setInterval(() => {
@@ -65,7 +65,7 @@ else if (currentWebsite.includes("bambora")) {
 else if (currentWebsite.includes("jimms")) {
     if (currentWebsite.includes("jimms.fi/fi/CheckOut") || currentWebsite.includes("jimms.fi/fi/ShoppingCart")) {
         let nextPage = setInterval(() => {
-            if(document.querySelector(".checkoutbutton > .btn-success")){
+            if (document.querySelector(".checkoutbutton > .btn-success")) {
                 document.querySelector(".checkoutbutton > .btn-success").click()
                 clearInterval(nextPage)
             }
@@ -119,23 +119,21 @@ else if (currentWebsite.includes("jimms")) {
                 clearInterval(mobilepayNext)
             }
         }, 1);
-    } 
-    
-    else {
+    } else {
         let addBasket = setInterval(() => {
-            if(document.querySelector(".addcard > .btn-success")){
+            if (document.querySelector(".addcard > .btn-success")) {
                 document.querySelector(".addcard > .btn-success").click()
                 clearInterval(addBasket)
             }
         }, 1);
 
         setInterval(() => {
-            if(document.querySelector(".addcard > .disabled")){
+            if (document.querySelector(".addcard > .disabled")) {
                 window.location.reload(false)
             }
         }, REFRESH_TIME);
     }
-}
+} 
 
 else if (currentWebsite.includes("mobilepay")) {
     let mobilepayPayment = setInterval(() => {
@@ -149,4 +147,43 @@ else if (currentWebsite.includes("mobilepay")) {
             }
         }
     }, 1);
+} 
+
+else if (currentWebsite.includes("verkkokauppa.com")) {
+    setInterval(() => {
+        if (document.querySelector(".vk-pointy-button.vk-pointy-button--right.vk-pointy-button--primary.vk-pointy-button--next-step") && document.querySelector(".vk-pointy-button.vk-pointy-button--right.vk-pointy-button--primary.vk-pointy-button--next-step").hasAttribute("disabled") == false) {
+            document.querySelector(".vk-pointy-button.vk-pointy-button--right.vk-pointy-button--primary.vk-pointy-button--next-step").click()
+        }
+    }, 1);
+
+    let verkAdd = setInterval(() => {
+        if (document.querySelector(".Button-mt7im1-0.KQcpZ.jevm7v-0.jqyCPK") && document.querySelector(".Button-mt7im1-0.KQcpZ.jevm7v-0.jqyCPK").hasAttribute("aria-disabled") == false) {
+            document.querySelector(".Button-mt7im1-0.KQcpZ.jevm7v-0.jqyCPK").click()
+            document.querySelector(".navigation-icons__link.navigation-icons__link--shopping-cart").click()
+            document.querySelector(".navigation-icons__link.navigation-icons__link--shopping-cart").click()
+            clearInterval(verkAdd)
+        }
+    }, 1);
+
+    let verkShipment = setInterval(() => {
+        if (document.querySelector(".panel__label.panel__label--shipment-group-delivery_near")) {
+            document.querySelector(".panel__label.panel__label--shipment-group-delivery_near").click()
+            document.querySelector("#l23-3565").click()
+        }
+        clearInterval(verkShipment)
+    }, 1);
+
+    let verkPayment = setInterval(() => {
+        if (document.querySelector(".panel__label.panel__label--tilisiirto.panel__label--first-item")) {
+            document.querySelector(".panel__label.panel__label--tilisiirto.panel__label--first-item").click()
+            document.querySelector(".epayment-provider__label.epayment-provider__label--saastopankki").click()
+        }
+        clearInterval(verkPayment)
+    }, 1);
+
+    setInterval(() => {
+        if (document.querySelector(".Button-mt7im1-0.KQcpZ.jevm7v-0.jqyCPK") && document.querySelector(".Button-mt7im1-0.KQcpZ.jevm7v-0.jqyCPK").hasAttribute("aria-disabled") == true) {
+            window.location.reload(false)
+        }
+    }, REFRESH_TIME);
 }
