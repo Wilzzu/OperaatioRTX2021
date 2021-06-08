@@ -128,7 +128,7 @@ else if (currentWebsite.includes("jimms")) {
         }, 1);
 
         setInterval(() => {
-            if (document.querySelector(".addcard > .disabled")) {
+            if (document.querySelector(".addcard > .disabled") || document.querySelector(".label.label-success") && document.querySelector(".label.label-success").innerText == "Tulossa pian myyntiin") {
                 window.location.reload(false)
             }
         }, REFRESH_TIME);
