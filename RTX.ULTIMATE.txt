@@ -1,8 +1,11 @@
 const id = 2958600
 const url = "https://www.proshop.fi/Basket/AddItem"
 const data = {productId: id}
+let count = 0
 setInterval(() => {
-    $.post(url,data, function(data, status){
-        console.log(status)
-    })
-}, 500);
+    $.post(url,data)
+	count += 1
+    if(count % 5 == 0 == true){
+	    console.log("LÄHETETYT PAKETIT: " + count)
+    }
+}, 750);
