@@ -1,0 +1,8 @@
+const id = 2958600
+const url = "https://www.proshop.fi/Basket/AddItem"
+const data = {productId: id}
+setInterval(() => {
+    $.post(url,data, function(data, status){
+        console.log(status)
+    })
+}, 500);
