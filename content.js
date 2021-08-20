@@ -1,4 +1,4 @@
-let REFRESH_TIME = "1500"
+let REFRESH_TIME = "1499"
 let PHONE_NUMBER = "123456789"
 
 let currentWebsite = window.location.toString()
